@@ -10,22 +10,6 @@ This project is designed to demonstrate SQL skills and techniques typically used
 3. Exploratory Data Analysis (EDA): Perform basic exploratory data analysis to understand the dataset.
 4. Business Analysis: Use SQL to answer specific business questions and derive insights from the sales data.
 
-5.1.CREATE DATABASE cars24_db;
-
-CREATE DATABASE cars24_db;
-
-USE cars24_db;
-
- CREATE TABLE cars_data (
-    Model_Name VARCHAR(255),
-    Price INT,
-    Manufacturing_Year INT,
-    Engine_Capacity INT,
-    Spare_Key VARCHAR(10),
-    Transmission VARCHAR(20),
-    KM_Driven INT,
-    Ownership INT,
-    Fuel_Type VARCHAR(20),
-    Imperfections INT,
-    Repainted_Parts INT
-);
+# Project Structure
+## Database Setup
+## . Database Creation:
