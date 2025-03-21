@@ -61,3 +61,160 @@ SELECT
     SUM(CASE WHEN Repainted_Parts IS NULL THEN 1 ELSE 0 END) AS repainted_parts_nulls
 FROM cars_data;
 ```
+
+## Data Analysis & Findings
+## Avarage car price
+
+``` sql
+   SELECT 
+    AVG(Price) AS avg_price, 
+    MIN(Price) AS min_price, 
+    MAX(Price) AS max_price
+FROM cars_data;
+
+The average car price is ₹5,26,354.
+The cheapest car costs ₹1,39,000, while the most expensive is ₹15,99,000.
+
+##Car Depreciation Over Time
+
+``` sql
+   SELECT 
+    Manufacturing_year, 
+    AVG(Price) AS avg_price
+FROM cars_data
+GROUP BY Manufacturing_year
+ORDER BY Manufacturing_year ASC;
+```
+Older cars (2010-2015) have an average price below ₹5,00,000.
+Newer models (2020-2023) have higher resale values, with 2023 models averaging ₹7,75,774
+ 3. Impact of KM driven on Price
+``` sql
+SELECT 
+    (SUM((KM_driven - avg_km) * (Price - avg_price)) /
+    (SQRT(SUM(POW(KM_driven - avg_km, 2))) * 
+     SQRT(SUM(POW(Price - avg_price, 2))))) AS correlation_km_price
+FROM (
+    SELECT 
+        KM_driven, 
+        Price, 
+        (SELECT AVG(KM_driven) FROM cars_data) AS avg_km, 
+        (SELECT AVG(Price) FROM cars_data) AS avg_price
+    FROM cars_data
+) AS subquery;
+
+There is a negative correlation (-0.31) between KM driven and Price, meaning higher mileage generally reduces car value.
+
+```
+
+
+ 4. Fuel Type Trends
+
+ ```sql
+
+  SELECT 
+    Fuel_type, 
+    COUNT(*) AS count, 
+    ROUND((COUNT(*) * 100.0 / SUM(COUNT(*)) OVER ()), 2) AS percentage
+FROM cars_data
+GROUP BY Fuel_type
+ORDER BY count DESC;
+
+```
+Petrol cars dominate the market (87.5% of listings).
+CNG cars (7.5%) and Diesel cars (5%) are much less common.
+
+
+##Transmission Type & Pricing
+
+``` sql
+
+SELECT 
+    Transmission, 
+    AVG(Price) AS avg_price
+FROM cars_data
+GROUP BY Transmission;
+```
+Automatic cars sell for a higher average price (₹6,01,339) than Manual cars (₹5,00,358).
+##Imperfections & Pricing
+
+``` sql
+
+SELECT 
+    Imperfections, 
+    AVG(Price) AS avg_price
+FROM cars_data
+GROUP BY Imperfections
+ORDER BY Imperfections ASC;
+
+```
+##Repainted Parts & Pricing
+
+``` sql
+
+SELECT 
+    Repainted_Parts, 
+    AVG(Price) AS avg_price
+FROM cars
+GROUP BY Repainted_Parts
+ORDER BY Repainted_Parts ASC;
+
+```
+
+Cars with more imperfections tend to have lower prices.
+Repainted parts also slightly reduce car value.
+
+
+##Car Sales Data Analysis Report
+
+1. Introduction
+This report analyzes used car sales data to identify pricing trends, depreciation factors, and the impact of various attributes on car value. The dataset consists of 1,445 records and 11 attributes.
+
+2. Key Findings
+
+2.1 Price Distribution
+
+The average car price is ₹5,26,354.
+
+The cheapest car is priced at ₹1,39,000, while the most expensive is ₹15,99,000.
+
+2.2 Car Depreciation Over Time
+
+Older models (2010-2015) have an average price below ₹5,00,000.
+
+Newer models (2020-2023) show higher resale values:
+
+2022 models: ₹7,21,184
+
+2023 models: ₹7,75,774
+
+2.3 Impact of Mileage on Price
+
+There is a negative correlation (-0.31) between KM driven and Price.
+
+Higher mileage typically reduces car value, but some exceptions exist.
+
+2.4 Fuel Type Trends
+
+Petrol cars dominate the market (87.5% of listings).
+
+CNG cars (7.5%) and Diesel cars (5%) are less common.
+
+2.5 Transmission & Pricing
+
+Automatic cars have a higher average price (₹6,01,339) compared to Manual cars (₹5,00,358).
+
+2.6 Car Condition & Pricing
+
+Cars with more imperfections tend to have lower prices.
+
+Repainted parts slightly reduce resale value.
+
+3. Conclusion & Recommendations
+
+Buyers: Investing in newer models (2020+) ensures better resale value.
+
+Sellers: Maintaining lower mileage and fewer imperfections helps retain value.
+
+Dealers: Automatics are in demand and command a higher price.
+
+This analysis provides actionable insights for car buyers, sellers, and dealerships to make informed decisions.
