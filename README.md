@@ -1,14 +1,15 @@
 # Data-Analysis-Dashboard
-This project is designed to demonstrate SQL skills and techniques typically used by data analysts to explore, clean, and analyze used car sales data. The project involves setting up a used car sales database, performing exploratory data analysis (EDA), and answering specific business questions through SQL queries.
+## This project is designed to demonstrate SQL skills and techniques typically used by data analysts to explore, clean, and analyze used car sales data.
+## The project involves setting up a used car sales database, performing exploratory data analysis (EDA), and answering specific business questions through SQL queries.
 
 # Project Overview
 ## Project Title : Used Cars Market Analysis
 ## Database : cars24_db
 # Objectives
-1. Set up a retail sales database: Create and populate a retail sales database with the provided sales data.
-2. Data Cleaning: Identify and remove any records with missing or null values.
-3. Exploratory Data Analysis (EDA): Perform basic exploratory data analysis to understand the dataset.
-4. Business Analysis: Use SQL to answer specific business questions and derive insights from the sales data.
+## 1.Set up a retail sales database: Create and populate a retail sales database with the provided sales data.
+## 2.Data Cleaning: Identify and remove any records with missing or null values.
+## 3.Exploratory Data Analysis (EDA): Perform basic exploratory data analysis to understand the dataset.
+## 4.Business Analysis: Use SQL to answer specific business questions and derive insights from the sales data.
 
 # Project Structure
 ## Database Setup
@@ -34,7 +35,7 @@ CREATE TABLE cars_data (
     Repainted_Parts INT
 );
 ```
-##2.Data Exploration & Cleaning
+## Data Exploration & Cleaning
 
    Record Count: Determine the total number of records in the dataset.
    Customer Count: Find out how many unique car models are in the dataset.
@@ -72,10 +73,10 @@ FROM cars_data;
     MAX(Price) AS max_price
 FROM cars_data;
 
-The average car price is ₹5,26,354.
-The cheapest car costs ₹1,39,000, while the most expensive is ₹15,99,000.
+. The average car price is ₹5,26,354.
+. The cheapest car costs ₹1,39,000, while the most expensive is ₹15,99,000.
 
-2.Car depretiation over
+## 2.Car depretiation over
 
 ``` sql
    SELECT 
@@ -84,10 +85,16 @@ The cheapest car costs ₹1,39,000, while the most expensive is ₹15,99,000.
 FROM cars_data
 GROUP BY Manufacturing_year
 ORDER BY Manufacturing_year ASC;
+
+```
 ```
 Older cars (2010-2015) have an average price below ₹5,00,000.
 Newer models (2020-2023) have higher resale values, with 2023 models averaging ₹7,75,774
- ## 3.Impact of KM driven on Price
+
+
+ ## 3. Impact of KM driven on Price
+
+
 ``` sql
 SELECT 
     (SUM((KM_driven - avg_km) * (Price - avg_price)) /
@@ -107,7 +114,7 @@ There is a negative correlation (-0.31) between KM driven and Price, meaning hig
 ```
 
 
- ## 5.Fuel Type Trends
+ ## 4.Fuel Type Trends
 
  ```sql
 
@@ -124,7 +131,7 @@ Petrol cars dominate the market (87.5% of listings).
 CNG cars (7.5%) and Diesel cars (5%) are much less common.
 
 
-## 6.Transmission Type & Pricing
+## 5.Transmission Type & Pricing
 
 ``` sql
 
@@ -135,7 +142,7 @@ FROM cars_data
 GROUP BY Transmission;
 ```
 Automatic cars sell for a higher average price (₹6,01,339) than Manual cars (₹5,00,358).
-## 7.Imperfections & Pricing
+## 6.Imperfections & Pricing
 
 ``` sql
 
@@ -147,7 +154,7 @@ GROUP BY Imperfections
 ORDER BY Imperfections ASC;
 
 ```
-## 8.Repainted Parts & Pricing
+## 7.Repainted Parts & Pricing
 
 ``` sql
 
@@ -164,7 +171,7 @@ Cars with more imperfections tend to have lower prices.
 Repainted parts also slightly reduce car value.
 
 
-## 9.Car Sales Data Analysis Report
+## 8.Car Sales Data Analysis Report
 
 1. Introduction
 This report analyzes used car sales data to identify pricing trends, depreciation factors, and the impact of various attributes on car value. The dataset consists of 1,445 records and 11 attributes.
