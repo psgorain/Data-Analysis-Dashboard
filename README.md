@@ -73,6 +73,8 @@ FROM cars_data;
     MAX(Price) AS max_price
 FROM cars_data;
 
+```
+
 . The average car price is ₹5,26,354.
 . The cheapest car costs ₹1,39,000, while the most expensive is ₹15,99,000.
 
@@ -87,7 +89,8 @@ GROUP BY Manufacturing_year
 ORDER BY Manufacturing_year ASC;
 
 ```
-```
+
+
 Older cars (2010-2015) have an average price below ₹5,00,000.
 Newer models (2020-2023) have higher resale values, with 2023 models averaging ₹7,75,774
 
@@ -109,9 +112,11 @@ FROM (
     FROM cars_data
 ) AS subquery;
 
-There is a negative correlation (-0.31) between KM driven and Price, meaning higher mileage generally reduces car value.
 
 ```
+
+There is a negative correlation (-0.31) between KM driven and Price, meaning higher mileage generally reduces car value.
+
 
 
  ## 4.Fuel Type Trends
