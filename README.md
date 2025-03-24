@@ -178,7 +178,7 @@ Repainted parts also slightly reduce car value.
 
 ## 8.Car Sales Data Analysis Report
 
-1. Introduction
+1. ## Introduction
 This report analyzes used car sales data to identify pricing trends, depreciation factors, and the impact of various attributes on car value. The dataset consists of 1,445 records and 11 attributes.
 
 # Key Findings
@@ -215,13 +215,13 @@ CNG cars (7.5%) and Diesel cars (5%) are less common.
 
 Automatic cars have a higher average price (₹6,01,339) compared to Manual cars (₹5,00,358).
 
-## 2.6Car Condition & Pricing
+## 2.6 Car Condition & Pricing
 
 Cars with more imperfections tend to have lower prices.
 
 Repainted parts slightly reduce resale value.
 
-## 3.Conclusion & Recommendations
+## 3. Conclusion & Recommendations
 
 Buyers: Investing in newer models (2020+) ensures better resale value.
 
